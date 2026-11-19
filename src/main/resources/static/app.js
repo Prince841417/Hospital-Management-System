@@ -1,0 +1,16 @@
+const API='/api';
+const configs={
+ patients:{endpoint:'patients',form:'patientForm',table:'patientTable',fields:['id','name','email','phone','age','gender','address']},
+ doctors:{endpoint:'doctors',form:'doctorForm',table:'doctorTable',fields:['id','name','email','phone','specialization','department']},
+ appointments:{endpoint:'appointments',form:'appointmentForm',table:'appointmentTable',fields:['id','patientId','doctorId','appointmentDate','reason','status']},
+ bills:{endpoint:'bills',form:'billForm',table:'billTable',fields:['id','patientId','amount','description','paymentStatus','billDate']}
+};
+async function request(url,options={}){const r=await fetch(url,{headers:{'Content-Type':'application/json'},...options});if(!r.ok){let msg='Request failed';try{const x=await r.json();msg=x.message||x.error||msg}catch{}throw new Error(msg)}return r.status===204?null:r.json()}
+function toast(msg){const t=document.getElementById('toast');t.textContent=msg;t.style.display='block';setTimeout(()=>t.style.display='none',2800)}
+function esc(v){return String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+async function load(type){const c=configs[type];try{const rows=await request(`${API}/${c.endpoint}`);document.getElementById(c.table).innerHTML=rows.length?`<table><thead><tr>${c.fields.map(f=>`<th>${f}</th>`).join('')}<th>Action</th></tr></thead><tbody>${rows.map(row=>`<tr>${c.fields.map(f=>`<td>${esc(row[f])}</td>`).join('')}<td><button class="delete" onclick="removeRecord('${type}',${row.id})">Delete</button></td></tr>`).join('')}</tbody></table>`:'<p>No records found.</p>'}catch(e){toast(e.message)}}
+async function loadDashboard(){try{const d=await request(`${API}/dashboard`);patientCount.textContent=d.patients;doctorCount.textContent=d.doctors;appointmentCount.textContent=d.appointments;billCount.textContent=d.bills}catch(e){toast('Could not load dashboard. Check backend/database.')}}
+async function removeRecord(type,id){if(!confirm('Delete this record?'))return;try{await request(`${API}/${configs[type].endpoint}/${id}`,{method:'DELETE'});toast('Record deleted');load(type);loadDashboard()}catch(e){toast(e.message)}}
+Object.entries(configs).forEach(([type,c])=>{document.getElementById(c.form).addEventListener('submit',async e=>{e.preventDefault();const data=Object.fromEntries(new FormData(e.target).entries());for(const k of ['age','patientId','doctorId'])if(data[k])data[k]=Number(data[k]);if(data.amount)data.amount=Number(data.amount);if(type==='appointments'&&data.appointmentDate)data.appointmentDate=data.appointmentDate+':00';try{await request(`${API}/${c.endpoint}`,{method:'POST',body:JSON.stringify(data)});e.target.reset();toast('Saved successfully');load(type);loadDashboard()}catch(err){toast(err.message)}})});
+document.querySelectorAll('.nav').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('.nav').forEach(x=>x.classList.remove('active'));b.classList.add('active');document.querySelectorAll('.page').forEach(p=>p.classList.add('hidden'));document.getElementById(b.dataset.page).classList.remove('hidden');heading.textContent=b.textContent;if(configs[b.dataset.page])load(b.dataset.page)}));
+loadDashboard();
