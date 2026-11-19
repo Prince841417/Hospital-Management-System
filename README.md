@@ -76,20 +76,6 @@ Send this JSON to `POST http://localhost:8080/api/patients`.
 ```
 
 The patient and doctor IDs should refer to existing records.
-
-## GitHub upload
-
-```bash
-git init
-git add .
-git commit -m "Initial Hospital Management System"
-git branch -M main
-git remote add origin https://github.com/Prince841417/Hospital-Management-System.git
-git push -u origin main
-```
-
-If `origin` already exists, use `git remote set-url origin https://github.com/Prince841417/Hospital-Management-System.git`.
-
 ## Troubleshooting
 - **Access denied for user:** verify MySQL username/password in `application.properties`.
 - **Communications link failure:** make sure MySQL service is running.
