@@ -162,147 +162,8 @@ http://localhost:8080
 
 🎉 Your Hospital Management System is now running!
 
-🔗 REST API Endpoints
 
-The application provides the following REST APIs:
 
-HTTP Method
-
-Endpoint
-
-Description
-
-GET
-
-/api/dashboard
-
-Get dashboard statistics
-
-GET
-
-/api/patients
-
-Get all patients
-
-POST
-
-/api/patients
-
-Add a new patient
-
-GET
-
-/api/patients/{id}
-
-Get patient by ID
-
-PUT
-
-/api/patients/{id}
-
-Update patient
-
-DELETE
-
-/api/patients/{id}
-
-Delete patient
-
-GET
-
-/api/doctors
-
-Get all doctors
-
-POST
-
-/api/doctors
-
-Add a new doctor
-
-GET
-
-/api/doctors/{id}
-
-Get doctor by ID
-
-PUT
-
-/api/doctors/{id}
-
-Update doctor
-
-DELETE
-
-/api/doctors/{id}
-
-Delete doctor
-
-GET
-
-/api/appointments
-
-Get all appointments
-
-POST
-
-/api/appointments
-
-Book an appointment
-
-GET
-
-/api/appointments/{id}
-
-Get appointment by ID
-
-PUT
-
-/api/appointments/{id}
-
-Update appointment
-
-DELETE
-
-/api/appointments/{id}
-
-Delete appointment
-
-GET
-
-/api/bills
-
-Get all bills
-
-POST
-
-/api/bills
-
-Create a bill
-
-GET
-
-/api/bills/{id}
-
-Get bill by ID
-
-PUT
-
-/api/bills/{id}
-
-Update bill
-
-DELETE
-
-/api/bills/{id}
-
-Delete bill
-
-🧪 Sample API Request
-
-Create a Patient
-
-Endpoint:
 
 POST http://localhost:8080/api/patients
 
@@ -341,15 +202,7 @@ This is an educational project and currently does not provide production-grade a
 
 Do not use real patient information or sensitive medical records.
 
-👨‍💻 Developer
 
-Prince Kumar Yadav
-
-B.Tech – Computer Science and Engineering
-
-GitHub: Prince841417
-
-Project Repository: Hospital Management System
 
 ⭐ Support
 
