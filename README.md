@@ -1,56 +1,313 @@
-# Hospital Management System
+🏥 Hospital Management System
 
-A full-stack Hospital Management System built with **Java 17, Spring Boot, Spring Data JPA, MySQL, HTML, CSS and JavaScript**.
+A full-stack Hospital Management System developed using Java, Spring Boot, MySQL, HTML, CSS, and JavaScript. This application helps manage hospital operations, including patients, doctors, appointments, and billing through a web-based dashboard.
 
-## Features
-- Dashboard with patient, doctor, appointment and invoice counts
-- Patient CRUD (create, list, delete, update through REST API)
-- Doctor CRUD
-- Appointment booking and status tracking
-- Billing records and payment status
-- Responsive web interface
-- REST API with basic validation
+<p align="center">   <b>Manage Hospital Operations Easily and Efficiently</b> </p>
 
-> This is an educational project starter. It does not include production-grade authentication, authorization, audit logging, encryption, backups, or healthcare regulatory compliance. Do not use real patient data.
+📌 Project Overview
 
-## Requirements
-- JDK 17+
-- Maven 3.8+
-- MySQL 8+
-- VS Code or IntelliJ IDEA
+The Hospital Management System is designed to simplify daily hospital management activities through a centralized platform.
 
-## Run the project
+It provides a dashboard to monitor hospital activities and REST APIs to manage patient records, doctor information, appointments, and billing details.
 
-1. Install and start MySQL.
-2. Open `src/main/resources/application.properties`.
-3. Replace `YOUR_MYSQL_PASSWORD` with your local MySQL root password. Change username if needed.
-4. From the project root run:
+✨ Features
 
-   ```bash
-   mvn spring-boot:run
-   ```
+📊 Dashboard – View patient, doctor, appointment, and invoice counts.
 
-5. Open **http://localhost:8080** in your browser.
+🧑‍⚕️ Patient Management – Add, view, update, and delete patient records.
 
-Spring Boot creates the database and tables automatically because `createDatabaseIfNotExist=true` and `spring.jpa.hibernate.ddl-auto=update` are configured.
+👨‍⚕️ Doctor Management – Manage doctor information.
 
-## REST API
+📅 Appointment Management – Book appointments and track appointment status.
 
-| Method | Endpoint | Purpose |
-|---|---|---|
-| GET | `/api/dashboard` | Dashboard counts |
-| GET/POST | `/api/patients` | List/create patients |
-| GET/PUT/DELETE | `/api/patients/{id}` | Read/update/delete patient |
-| GET/POST | `/api/doctors` | List/create doctors |
-| GET/PUT/DELETE | `/api/doctors/{id}` | Read/update/delete doctor |
-| GET/POST | `/api/appointments` | List/book appointments |
-| GET/PUT/DELETE | `/api/appointments/{id}` | Read/update/delete appointment |
-| GET/POST | `/api/bills` | List/create bills |
-| GET/PUT/DELETE | `/api/bills/{id}` | Read/update/delete bill |
+💳 Billing Management – Maintain billing records and payment status.
 
-### Example: create a patient
+📱 Responsive Interface – Web interface built with HTML, CSS, and JavaScript.
 
-```json
+🔗 REST API Integration – Backend APIs developed using Spring Boot.
+
+🗄️ Database Management – Store application data in MySQL.
+
+🛠️ Technology Stack
+
+Technology
+
+Purpose
+
+Java 17
+
+Backend programming
+
+Spring Boot 3.4.5
+
+Backend framework
+
+Spring Data JPA
+
+Database operations
+
+MySQL 8
+
+Database
+
+HTML5
+
+Frontend structure
+
+CSS3
+
+Styling and layout
+
+JavaScript
+
+Frontend functionality
+
+Maven
+
+Dependency management
+
+Git & GitHub
+
+Version control
+
+📂 Project Structure
+
+Hospital-Management-System/
+│
+├── database/
+│   └── hospital.sql
+│
+├── src/
+│   └── main/
+│       ├── java/com/hospital/
+│       │   ├── HospitalApplication.java
+│       │   │
+│       │   ├── controller/
+│       │   │   ├── AppointmentController.java
+│       │   │   ├── BillController.java
+│       │   │   ├── DashboardController.java
+│       │   │   ├── DoctorController.java
+│       │   │   └── PatientController.java
+│       │   │
+│       │   ├── entity/
+│       │   │   ├── Appointment.java
+│       │   │   ├── Bill.java
+│       │   │   ├── Doctor.java
+│       │   │   └── Patient.java
+│       │   │
+│       │   └── repository/
+│       │       ├── AppointmentRepository.java
+│       │       ├── BillRepository.java
+│       │       ├── DoctorRepository.java
+│       │       └── PatientRepository.java
+│       │
+│       └── resources/
+│           ├── application.properties
+│           └── static/
+│               ├── index.html
+│               ├── style.css
+│               └── app.js
+│
+├── .gitignore
+├── pom.xml
+└── README.md
+
+⚙️ Requirements
+
+Before running this project, install:
+
+Java JDK 17 or higher
+
+Apache Maven 3.8 or higher
+
+MySQL Server 8 or higher
+
+VS Code or IntelliJ IDEA
+
+Git
+
+🚀 Installation & Setup
+
+Step 1: Clone the Repository
+
+git clone https://github.com/Prince841417/Hospital-Management-System.git
+
+Step 2: Open the Project
+
+cd Hospital-Management-System
+
+Step 3: Configure MySQL
+
+Start your MySQL server.
+
+Open:
+
+src/main/resources/application.properties
+
+Configure your local MySQL username and password.
+
+Important: Never upload your actual database password or other secrets to GitHub.
+
+Step 4: Run the Application
+
+Open the terminal in the project directory and execute:
+
+mvn spring-boot:run
+
+Step 5: Open in Browser
+
+Once the application starts successfully, visit:
+
+http://localhost:8080
+
+🎉 Your Hospital Management System is now running!
+
+🔗 REST API Endpoints
+
+The application provides the following REST APIs:
+
+HTTP Method
+
+Endpoint
+
+Description
+
+GET
+
+/api/dashboard
+
+Get dashboard statistics
+
+GET
+
+/api/patients
+
+Get all patients
+
+POST
+
+/api/patients
+
+Add a new patient
+
+GET
+
+/api/patients/{id}
+
+Get patient by ID
+
+PUT
+
+/api/patients/{id}
+
+Update patient
+
+DELETE
+
+/api/patients/{id}
+
+Delete patient
+
+GET
+
+/api/doctors
+
+Get all doctors
+
+POST
+
+/api/doctors
+
+Add a new doctor
+
+GET
+
+/api/doctors/{id}
+
+Get doctor by ID
+
+PUT
+
+/api/doctors/{id}
+
+Update doctor
+
+DELETE
+
+/api/doctors/{id}
+
+Delete doctor
+
+GET
+
+/api/appointments
+
+Get all appointments
+
+POST
+
+/api/appointments
+
+Book an appointment
+
+GET
+
+/api/appointments/{id}
+
+Get appointment by ID
+
+PUT
+
+/api/appointments/{id}
+
+Update appointment
+
+DELETE
+
+/api/appointments/{id}
+
+Delete appointment
+
+GET
+
+/api/bills
+
+Get all bills
+
+POST
+
+/api/bills
+
+Create a bill
+
+GET
+
+/api/bills/{id}
+
+Get bill by ID
+
+PUT
+
+/api/bills/{id}
+
+Update bill
+
+DELETE
+
+/api/bills/{id}
+
+Delete bill
+
+🧪 Sample API Request
+
+Create a Patient
+
+Endpoint:
+
+POST http://localhost:8080/api/patients
+
+Request Body:
+
 {
   "name": "Aarav Sharma",
   "email": "aarav@example.com",
@@ -59,25 +316,43 @@ Spring Boot creates the database and tables automatically because `createDatabas
   "gender": "Male",
   "address": "Bhopal"
 }
-```
 
-Send this JSON to `POST http://localhost:8080/api/patients`.
+🎯 Future Enhancements
 
-### Example: create an appointment
+User Login and Registration
 
-```json
-{
-  "patientId": 1,
-  "doctorId": 1,
-  "appointmentDate": "2026-12-01T10:30:00",
-  "reason": "General checkup",
-  "status": "BOOKED"
-}
-```
+Spring Security Authentication
 
-The patient and doctor IDs should refer to existing records.
-## Troubleshooting
-- **Access denied for user:** verify MySQL username/password in `application.properties`.
-- **Communications link failure:** make sure MySQL service is running.
-- **Port 8080 already in use:** change `server.port` in `application.properties`.
-- **Maven not found:** install Maven or use the Maven wrapper generated by your IDE.
+Admin and Staff Role Management
+
+Doctor and Patient Search
+
+Appointment Calendar
+
+Online Payment Integration
+
+Report Generation
+
+Cloud Deployment
+
+🔐 Security Notice
+
+This is an educational project and currently does not provide production-grade authentication, authorization, audit logging, or healthcare regulatory compliance.
+
+Do not use real patient information or sensitive medical records.
+
+👨‍💻 Developer
+
+Prince Kumar Yadav
+
+B.Tech – Computer Science and Engineering
+
+GitHub: Prince841417
+
+Project Repository: Hospital Management System
+
+⭐ Support
+
+If you find this project useful, consider giving the repository a ⭐ on GitHub.
+
+Thank you for visiting!
